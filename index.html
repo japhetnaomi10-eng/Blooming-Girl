@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e94e9b">
+<title>SheCodes Haven | Learn. Grow. Rise.</title>
+<style>
+:root {
+  --pink:#e94e9b;
+  --light:#fff0f7;
+  --purple:#7950c9;
+  --deep:#43256d;
+  --ink:#30233d;
+  --muted:#776b82;
+  --border:#efdeef;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:#fffafd;color:var(--ink);font-family:system-ui,Arial,sans-serif;line-height:1.65}
+a{color:var(--purple)}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:#fffffff2;border-bottom:1px solid var(--border)}
+.container{width:min(1050px,92%);margin:auto}
+nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:13px 0}
+.logo{font-weight:900;font-size:1.2rem;color:var(--deep);text-decoration:none}
+.logo span{color:var(--pink)}
+.navlinks{display:flex;flex-wrap:wrap;gap:5px}
+.navlinks a{padding:7px 9px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:.9rem}
+.navlinks a:hover{background:var(--light)}
+.hero{padding:60px 0;background:linear-gradient(130deg,#fff0f7,#f1eaff)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+h1{font-size:clamp(2.5rem,7vw,4.2rem);line-height:1.1;letter-spacing:-1px;margin:14px 0}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.2;margin:0 0 12px}
+h3{line-height:1.3}
+.gradient{background:linear-gradient(90deg,var(--pink),var(--purple));color:transparent;background-clip:text;-webkit-background-clip:text}
+.muted{color:var(--muted)}
+.pill{display:inline-block;background:var(--light);color:#a12c70;border-radius:30px;padding:5px 11px;font-size:.83rem;font-weight:750}
+.card,.hero-card,.lesson-main,.sidebar,.quote-card,.playground{background:white;border:1px solid var(--border);border-radius:17px;padding:20px}
+.hero-card{box-shadow:0 8px 30px #7144a010}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--pink);color:white;text-decoration:none;border:0;border-radius:10px;padding:11px 16px;font-weight:750}
+.btn.purple{background:var(--purple)}
+.btn.light{background:white;color:var(--purple);border:1px solid var(--border)}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+section{padding:55px 0}
+.soft{background:#fff5fb}
+.section-head{text-align:center;max-width:680px;margin:0 auto 28px}
+.section-head p{color:var(--muted)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card h3{margin:9px 0 5px}
+.card p{color:var(--muted)}
+.academy{display:grid;grid-template-columns:250px minmax(0,1fr);gap:18px;align-items:start}
+.sidebar{position:sticky;top:88px}
+.lesson-group{font-size:.85rem;font-weight:850;color:var(--purple);margin:17px 0 5px}
+.lesson-link{display:block;width:100%;text-align:left;background:white;color:var(--ink);border:0;border-radius:8px;padding:9px;margin:3px 0}
+.lesson-link:hover,.lesson-link.active{background:var(--light);color:var(--deep)}
+.lesson-link.completed::after{content:" ✓";color:#148354}
+.progress{height:8px;background:#f1e7f2;border-radius:20px;overflow:hidden}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--purple))}
+pre{background:#292238;color:#fff0f8;border-radius:10px;padding:14px;overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.86rem}
+.callout{background:var(--light);border-left:4px solid var(--pink);padding:12px;border-radius:7px}
+.practice{background:#f8f3ff;padding:16px;border-radius:12px;margin-top:18px}
+.answers{display:grid;gap:8px}
+.answers button{padding:10px;text-align:left;border:1px solid var(--border);border-radius:9px;background:white;color:var(--ink)}
+.answers button:hover{border-color:var(--purple)}
+.feedback{font-weight:700;min-height:24px}
+.playground label{display:block;font-weight:750;margin:12px 0 6px}
+textarea{display:block;width:100%;min-height:130px;resize:vertical;padding:12px;border:1px solid var(--border);border-radius:10px;font:14px/1.5 monospace}
+.playground textarea{background:#292238;color:#fff0f8}
+iframe{width:100%;height:220px;border:1px solid var(--border);border-radius:10px;background:white}
+.searchrow{display:grid;grid-template-columns:1fr 210px;gap:10px;margin-bottom:18px}
+.searchrow input,.searchrow select{width:100%;padding:12px;border:1px solid var(--border);border-radius:10px;background:white;color:var(--ink)}
+.scholarships{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.scholarship-card{display:flex;flex-direction:column;align-items:flex-start}
+.scholarship-card .bottom{margin-top:auto;padding-top:12px}
+.notice{background:#fff6df;color:#73531b;border:1px solid #f0dca7;border-radius:11px;padding:13px}
+.quote-card{text-align:center;max-width:750px;margin:auto;padding:28px}
+#quoteText{font-size:1.35rem;font-weight:750}
+.creator{background:linear-gradient(120deg,#7040b2,#d94192);color:white;border-radius:20px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+.creator p{color:#fff0fa}
+.creator .btn{background:white;color:var(--deep)}
+footer{background:#30203e;color:white;text-align:center;padding:28px 0}
+footer a{color:#ffd7ed}
+.wa{position:fixed;right:16px;bottom:16px;width:54px;height:54px;display:grid;place-items:center;border-radius:50%;background:#20bd65;color:white;text-decoration:none;font-size:1.6rem;z-index:9;box-shadow:0 5px 18px #0002}
+@media(max-width:720px){
+ .hero-grid,.academy{grid-template-columns:1fr}
+ .grid3{grid-template-columns:1fr}
+ .scholarships{grid-template-columns:1fr}
+ .searchrow{grid-template-columns:1fr}
+ .sidebar{position:static}
+ .hero{padding:42px 0}
+ section{padding:42px 0}
+ .navlinks a{font-size:.8rem;padding:6px}
+}
+</style>
+</head>
+<body>
+<header>
+  <nav class="container" aria-label="Main navigation">
+    <a class="logo" href="#home">♡ SheCodes <span>Haven</span></a>
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#learn">Coding</a>
+      <a href="#scholarships">Scholarships</a>
+      <a href="#motivation">Motivation</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="pill">YOUR JOURNEY STARTS HERE 🌸</span>
+      <h1>Dream big.<br><span class="gradient">Code boldly.</span><br>Rise together.</h1>
+      <p class="muted">Learn technology, discover international scholarship resources, and build confidence — one step at a time.</p>
+      <div class="actions">
+        <a class="btn" href="#learn">Start learning →</a>
+        <a class="btn light" href="#scholarships">Find opportunities</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div style="font-size:3rem">👩🏽‍💻 💜</div>
+      <h2>Your future is worth investing in.</h2>
+      <p class="muted">You do not have to know everything to begin.</p>
+      <p>💻 <strong>Learn</strong> HTML, CSS and JavaScript</p>
+      <p>🎓 <strong>Discover</strong> official scholarship sources</p>
+      <p>🌷 <strong>Grow</strong> at your own pace</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Welcome to your <span class="gradient">Haven</span></h2>
+      <p>A friendly place for girls who want to explore technology and educational opportunities.</p>
+    </div>
+    <div class="grid3">
+      <article class="card"><div style="font-size:2rem">💻</div><h3>Coding Academy</h3><p>Read beginner lessons, answer quizzes, and experiment with code.</p><a href="#learn">Start learning →</a></article>
+      <article class="card"><div style="font-size:2rem">🎓</div><h3>Scholarship Hub</h3><p>Search programmes and follow their official websites for current information.</p><a href="#scholarships">Explore opportunities →</a></article>
+      <article class="card"><div style="font-size:2rem">🌸</div><h3>Motivation</h3><p>Take a breath and find an encouraging reminder.</p><a href="#motivation">Get inspired →</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="soft" id="learn">
+  <div class="container">
+    <div class="section-head">
+      <span class="pill">LEARN BY DOING</span>
+      <h2>Your coding journey begins here</h2>
+      <p>Select a lesson, study the example, and answer its practice question.</p>
+    </div>
+    <div class="academy">
+      <aside class="sidebar">
+        <h3>📚 Learning path</h3>
+        <p id="progressText" class="muted">0 lessons completed</p>
+        <div class="progress"><div id="progressBar"></div></div>
+        <div id="lessonMenu"></div>
+      </aside>
+      <article class="lesson-main" id="lessonContent" aria-live="polite">
+        <p>Choose a lesson from the menu.</p>
+      </article>
+    </div>
+
+    <div class="playground" style="margin-top:24px">
+      <h2>🧪 Live code playground</h2>
+      <p class="muted">Edit the HTML and CSS, then tap Run. The preview is isolated from the rest of the website.</p>
+      <label for="playHTML">HTML</label>
+      <textarea id="playHTML" spellcheck="false"><h1>Hello, future developer!</h1>
+<p>I built my first webpage.</p>
+<button onclick="document.getElementById('msg').textContent='It works! 🎉'">Click me</button>
+<p id="msg"></p></textarea>
+      <label for="playCSS">CSS</label>
+      <textarea id="playCSS" spellcheck="false">body { font-family: Arial; padding: 20px; color: #6540a0; }
+h1 { color: #e94e9b; }
+button { padding: 10px; }</textarea>
+      <label for="playJS">JavaScript (optional)</label>
+      <textarea id="playJS" spellcheck="false">document.body.style.borderTop = "5px solid #e94e9b";</textarea>
+      <div class="actions">
+        <button class="btn" id="runCode" type="button">▶ Run code</button>
+        <button class="btn light" id="resetCode" type="button">Reset example</button>
+      </div>
+      <iframe id="preview" title="Live webpage preview" sandbox="allow-scripts"></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="scholarships">
+  <div class="container">
+    <div class="section-head">
+      <span class="pill">THE SCHOLARSHIP HUB</span>
+      <h2>Explore international opportunities</h2>
+      <p>Search the directory, then verify eligibility and application details on the official website.</p>
+    </div>
+    <div class="notice"><strong>Deadline reminder:</strong> These listings are starting points, not confirmation that applications are open. Deadlines, degree eligibility, benefits and eligible countries can change. Each card directs you to an official source; check the current call before applying.</div>
+    <div class="searchrow" style="margin-top:18px">
+      <input id="scholarSearch" type="search" placeholder="Search scholarship, country or subject..." aria-label="Search scholarships">
+      <select id="countryFilter" aria-label="Filter by destination">
+        <option value="all">All destinations</option>
+        <option>Türkiye</option><option>South Korea</option><option>Japan</option>
+        <option>China</option><option>Hungary</option><option>Romania</option>
+        <option>Brunei</option><option>United Kingdom</option><option>United States</option>
+        <option>Multiple countries</option>
+      </select>
+    </div>
+    <p id="scholarCount" class="muted" aria-live="polite"></p>
+    <div id="scholarshipList" class="scholarships"></div>
+  </div>
+</section>
+
+<section class="soft" id="motivation">
+  <div class="container">
+    <div class="section-head"><h2>A little reminder for you 💗</h2><p>Take inspiration from words that celebrate learning, persistence, and possibility.</p></div>
+    <div class="quote-card">
+      <p id="quoteText">You can be a beginner and still belong in technology.</p>
+      <p id="quoteAuthor" class="muted">A SheCodes Haven reminder</p>
+      <div class="actions" style="justify-content:center">
+        <button class="btn purple" type="button" id="newQuote">✨ Another quote</button>
+        <button class="btn light" type="button" id="copyQuote">Copy quote</button>
+      </div>
+      <p id="quoteFeedback" class="muted" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="creator">
+      <div>
+        <h2>Talk to the creator 💬</h2>
+        <p>Questions about the platform or learning to code? Send me a message on WhatsApp.</p>
+      </div>
+      <a class="btn" href="https://wa.me/2348022792833?text=Hi%21%20I%20found%20SheCodes%20Haven%20and%20I%27d%20love%20to%20connect." target="_blank" rel="noopener noreferrer">Chat on WhatsApp →</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>♡ SheCodes Haven</strong>
+    <p>Learn. Grow. Rise. 🌸</p>
+    <p>Independent educational resource. Scholarship details must be confirmed with their providers.</p>
+    <p>© <span id="year"></span> SheCodes Haven</p>
+    <a href="#home">Back to top ↑</a>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/2348022792833?text=Hi%21%20I%20found%20SheCodes%20Haven." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp the creator">☏</a>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const safeRead=(key,fallback)=>{
+ try{
+  const v=JSON.parse(localStorage.getItem(key)||"null");
+  return v===null?fallback:v;
+ }catch(e){return fallback;}
+};
+const safeWrite=(key,value)=>{
+ try{localStorage.setItem(key,JSON.stringify(value));}catch(e){}
+};
+
+/* LESSON CONTENT */
+const lessons=[
+{id:"h1",group:"HTML",title:"1. What is HTML?",intro:"HTML stands for HyperText Markup Language. It creates the structure of a webpage.",explain:"Tags tell the browser what type of content it is displaying. Many elements have an opening tag and a closing tag.",example:"<h1>My First Website</h1>\n<p>Hello! I am learning HTML.</p>",question:"Which tag creates a large first-level heading?",options:["<p>","<h1>","<img>"],answer:1,hint:"It starts with h and the number 1.",solution:"The <h1> tag creates a first-level heading."},
+{id:"h2",group:"HTML",title:"2. Paragraphs and links",intro:"Use paragraphs for text and links to take visitors to another page.",explain:"The a element creates a link. Its href attribute specifies the destination.",example:'<p>Welcome to my website.</p>\n<a href="https://example.com">Visit Example</a>',question:"Which attribute sets the destination of a link?",options:["src","href","style"],answer:1,hint:"It is written inside the opening a tag.",solution:"href specifies the destination URL."},
+{id:"h3",group:"HTML",title:"3. Lists",intro:"Lists help organise related information.",explain:"Use ul for a bulleted list, ol for a numbered list, and li for each list item.",example:"<ul>\n  <li>Learn HTML</li>\n  <li>Practise CSS</li>\n</ul>",question:"Which tag represents an individual list item?",options:["<li>","<ul>","<head>"],answer:0,hint:"It means list item.",solution:"The <li> element represents a list item."},
+{id:"c1",group:"CSS",title:"4. What is CSS?",intro:"CSS stands for Cascading Style Sheets. It controls a webpage's appearance.",explain:"A CSS rule selects an element and sets properties to change how it looks.",example:"h1 {\n  color: purple;\n  font-size: 32px;\n}",question:"Which CSS property changes text colour?",options:["font-size","background","color"],answer:2,hint:"It has the same name as the feature you are changing.",solution:"The color property changes text colour."},
+{id:"c2",group:"CSS",title:"5. Background and spacing",intro:"Colours and spacing make pages easier to read.",explain:"Padding is the space inside an element's border. Margin is the space outside it.",example:"body {\n  background-color: #fff0f7;\n}\n.card {\n  padding: 20px;\n  margin: 12px;\n}",question:"Which property adds space inside an element's border?",options:["margin","padding","color"],answer:1,hint:"It is the space inside the box.",solution:"padding adds space inside an element's border."},
+{id:"c3",group:"CSS",title:"6. Classes and buttons",intro:"Classes allow you to apply the same styling to multiple elements.",explain:"Set class=\"primary\" in HTML, then target that class with .primary in CSS.",example:'<button class="primary">Get started</button>\n\n.primary {\n  background: #e94e9b;\n  color: white;\n  padding: 12px;\n}',question:"Which selector targets class=\"card\"?",options:["#card",".card","card()"],answer:1,hint:"A class selector begins with a dot.",solution:".card selects elements whose class includes card."},
+{id:"j1",group:"JavaScript",title:"7. What is JavaScript?",intro:"JavaScript adds behaviour to websites, including responding to clicks.",explain:"You can find an element by its ID and change its text using textContent.",example:'<p id="message">Hello!</p>\n<button onclick="changeText()">Click</button>\n<script>\nfunction changeText() {\n document.getElementById("message").textContent = "It works!";\n}\n<\/script>',question:"Which property changes the text inside an element?",options:["textContent","href","margin"],answer:0,hint:"Its name refers to the text content.",solution:"textContent changes an element's text."},
+{id:"j2",group:"JavaScript",title:"8. Variables",intro:"Variables store values that your code can use.",explain:"Use const for bindings that should not be reassigned and let when a variable's value needs to change.",example:'const learner = "Ada";\nlet points = 0;\npoints = points + 1;\nconsole.log(learner, points);',question:"Which keyword is suitable when a variable will be reassigned?",options:["const only","let","<p>"],answer:1,hint:"It is a three-letter keyword.",solution:"let declares a variable that can be reassigned."},
+{id:"j3",group:"JavaScript",title:"9. Functions",intro:"A function is a reusable block of code.",explain:"Declare a function with the function keyword, give it a name, and place the code inside curly braces.",example:'function greet() {\n  alert("Hello, developer!");\n}\ngreet();',question:"Which keyword declares a standard JavaScript function?",options:["function","style","href"],answer:0,hint:"It describes the reusable block.",solution:"The function keyword declares a standard function."}
+];
+
+let completed=safeRead("shc-v2-completed",[]);
+if(!Array.isArray(completed))completed=[];
+let currentLesson=lessons[0].id;
+let lastGroup="";
+
+function renderMenu(){
+ const root=$("lessonMenu");
+ root.replaceChildren();
+ lastGroup="";
+ lessons.forEach(lesson=>{
+  if(lesson.group!==lastGroup){
+   const label=document.createElement("div");
+   label.className="lesson-group";
+   label.textContent=lesson.group+" BASICS";
+   root.append(label);
+   lastGroup=lesson.group;
+  }
+  const btn=document.createElement("button");
+  btn.type="button";
+  btn.className="lesson-link";
+  btn.dataset.lesson=lesson.id;
+  btn.textContent=lesson.title;
+  btn.addEventListener("click",()=>showLesson(lesson.id));
+  root.append(btn);
+ });
+ updateProgress();
+}
+function updateProgress(){
+ const count=lessons.filter(l=>completed.includes(l.id)).length;
+ $("progressText").textContent=count+" of "+lessons.length+" lessons completed";
+ $("progressBar").style.width=(count/lessons.length*100)+"%";
+ document.querySelectorAll(".lesson-link").forEach(b=>{
+  b.classList.toggle("active",b.dataset.lesson===currentLesson);
+  b.classList.toggle("completed",completed.includes(b.dataset.lesson));
+ });
+}
+function showLesson(id){
+ const lesson=lessons.find(l=>l.id===id);
+ if(!lesson)return;
+ currentLesson=id;
+ const root=$("lessonContent");
+ root.replaceChildren();
+ updateProgress();
+
+ function el(tag,text,className){
+  const node=document.createElement(tag);
+  if(text!==undefined)node.textContent=text;
+  if(className)node.className=className;
+  return node;
+ }
+ root.append(el("span",lesson.group+" BASICS","pill"));
+ root.append(el("h2",lesson.title));
+ root.append(el("p",lesson.intro));
+ root.append(el("h3","Understand the concept"));
+ root.append(el("p",lesson.explain));
+ root.append(el("h3","Code exampl
